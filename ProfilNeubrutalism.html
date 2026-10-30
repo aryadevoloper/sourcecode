@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--
+  =====================================================
+   PROFIL LINK TEMPLATE
+   Kode By Arya Fox
+   Sumber: https://whatsapp.com/channel/0029Vb94ZxHBadmday3k9Q0I
+  =====================================================
+
+  CARA PAKAI
+  1. Cari blok <script id="config"> di bagian paling bawah file ini.
+  2. Ganti nama, link foto (upload ke catbox.moe), dan link sosial media kamu.
+  3. Simpan, lalu buka file ini di browser atau upload ke hosting.
+
+  Mohon jangan hapus kredit ini. Terima kasih!
+-->
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="Arya Fox">
+<meta name="theme-color" content="#ff7a1a">
+<title>Profil</title>
+<link rel="icon" id="favicon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dark:#14110f; --ink:#14110f; --paper:#fff; --bg:#fff4e0; --mut:rgba(20,17,15,.62);
+    --orange:#ff7a1a; --pink:#ff5c9a; --blue:#3b5bff; --yellow:#ffd23f; --green:#25d366;
+    --grid:rgba(20,17,15,.07); --glow:rgba(255,122,26,.3);
+    --bw:3px; --r:20px;
+  }
+  [data-theme="dark"]{
+    --ink:#fff4e0; --paper:#1f1a17; --bg:#14110f; --mut:rgba(255,244,224,.62);
+    --grid:rgba(255,244,224,.07); --glow:rgba(255,122,26,.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{
+    min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--ink);
+    font-family:"Outfit","Segoe UI",system-ui,sans-serif;overflow-x:hidden;transition:background .35s,color .35s;
+  }
+  .mono{font-family:"DM Mono",ui-monospace,Menlo,monospace}
+
+  /* ===== Latar: grid bergerak + sorotan yang mengikuti jari/kursor ===== */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(var(--grid) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--grid) 1.5px,transparent 1.5px);
+    background-size:32px 32px;animation:grid 8s linear infinite;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(280px circle at var(--px,50%) var(--py,28%),var(--glow),transparent 70%);
+  }
+  @keyframes grid{to{background-position:32px 32px}}
+
+  /* ===== Pita berjalan ===== */
+  .ticker{
+    position:relative;z-index:3;background:var(--orange);color:var(--dark);border-bottom:var(--bw) solid var(--ink);
+    overflow:hidden;white-space:nowrap;padding:8px 0;font:500 .74rem "DM Mono",monospace;letter-spacing:1.2px;
+  }
+  .track{display:inline-block;animation:marq 26s linear infinite}
+  .track span{display:inline-block;white-space:pre}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  .wrap{
+    position:relative;z-index:2;width:100%;max-width:440px;margin:0 auto;text-align:center;
+    padding:24px 20px calc(48px + env(safe-area-inset-bottom));
+  }
+
+  /* ===== Efek masuk & tekan ===== */
+  .pop{animation:pop .55s cubic-bezier(.2,.9,.3,1.2) var(--d,0s) backwards}
+  @keyframes pop{from{opacity:0;transform:translateY(22px) scale(.95)}}
+  .press{box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+  .press:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+  .press:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--ink)}
+  a:focus-visible,button:focus-visible{outline:var(--bw) solid var(--blue);outline-offset:3px}
+
+  /* ===== Kartu profil + banner ===== */
+  .hero{
+    background:var(--paper);border:var(--bw) solid var(--ink);border-radius:var(--r);
+    box-shadow:6px 6px 0 var(--ink);padding:0 16px 24px;
+  }
+  .banner{
+    position:relative;height:124px;margin:0 -16px;border-bottom:var(--bw) solid var(--ink);
+    border-radius:calc(var(--r) - var(--bw)) calc(var(--r) - var(--bw)) 0 0;
+    background:radial-gradient(rgba(20,17,15,.32) 2px,transparent 2.6px) 0 0/16px 16px,var(--pink);
+    animation:halftone 5s linear infinite;
+  }
+  @keyframes halftone{to{background-position:16px 16px,0 0}}
+  .chip{
+    position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;
+    background:var(--paper);color:var(--ink);border:var(--bw) solid var(--ink);border-radius:999px;
+    font:500 .68rem "DM Mono",monospace;box-shadow:3px 3px 0 var(--ink);white-space:nowrap;
+  }
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--green);border:2px solid var(--ink);animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{50%{transform:scale(1.3)}}
+  .btns{position:absolute;top:12px;right:12px;display:flex;gap:8px}
+  .sq{
+    width:36px;height:36px;border:var(--bw) solid var(--ink);border-radius:11px;display:grid;place-items:center;
+    cursor:pointer;color:var(--dark);box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s;
+  }
+  .sq svg{width:18px;height:18px;fill:currentColor}
+  .sq:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+  .sq:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+  #share{background:var(--yellow)} #tema{background:#fff}
+
+  .av{position:relative;z-index:2;width:112px;height:112px;margin:-56px auto 0}
+  .av img{
+    width:100%;height:100%;display:block;border-radius:50%;object-fit:cover;background:#000;
+    border:4px solid var(--ink);box-shadow:5px 5px 0 var(--yellow);
+  }
+  h1{margin-top:20px;font-size:clamp(1.6rem,7.2vw,2.15rem);line-height:1.15;letter-spacing:-.8px;font-weight:800;text-wrap:balance}
+  .hl{
+    display:inline-block;background:var(--orange);color:var(--dark);padding:0 .18em;margin-left:.04em;
+    border:var(--bw) solid var(--ink);border-radius:10px;box-shadow:3px 3px 0 var(--ink);
+  }
+  .handle{margin-top:10px;font:400 .88rem "DM Mono",monospace;color:var(--mut)}
+  .typer{
+    display:block;width:min(100%,260px);min-height:40px;margin:14px auto 0;padding:8px 16px;background:var(--yellow);color:var(--dark);
+    border:var(--bw) solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);
+    font:500 .82rem "DM Mono",monospace;line-height:1.3;text-align:center;
+  }
+  .typer::after{content:"▍";margin-left:2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ===== Kotak sosmed ===== */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+  a.tile{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;aspect-ratio:1/1;padding:8px;
+    text-decoration:none;color:var(--tc,var(--dark));border:var(--bw) solid var(--ink);border-radius:var(--r);
+  }
+  .tile .ic{
+    width:46px;height:46px;border-radius:14px;background:var(--dark);display:grid;place-items:center;transition:transform .25s;
+  }
+  .tile:hover .ic{transform:rotate(-8deg) scale(1.08)}
+  .tile .ic svg{width:23px;height:23px;fill:#fff}
+  .tile .nm{font-weight:700;font-size:.9rem;line-height:1}
+
+  /* ===== Label & kartu saluran ===== */
+  .label{margin:28px 0 12px;display:flex;align-items:center;gap:12px}
+  .label span{
+    flex:none;background:var(--ink);color:var(--bg);font:500 .72rem "DM Mono",monospace;letter-spacing:1px;
+    text-transform:uppercase;padding:5px 12px;border-radius:8px;
+  }
+  .label::after{content:"";flex:1;height:var(--bw);background:var(--ink);border-radius:2px}
+  .chans{display:flex;flex-direction:column;gap:14px}
+  a.chan{
+    display:flex;align-items:center;gap:14px;padding:16px;text-align:left;text-decoration:none;color:var(--dark);
+    border:var(--bw) solid var(--ink);border-radius:var(--r);
+  }
+  .cic{
+    flex:none;width:50px;height:50px;border-radius:14px;background:var(--dark);color:var(--cc,var(--green));display:grid;place-items:center;
+  }
+  .cic svg{width:26px;height:26px;fill:currentColor}
+  .tt{flex:1;min-width:0}
+  .tt b{display:block;font-size:1.12rem;line-height:1.15;font-weight:700}
+  .tt small{
+    display:block;margin-top:4px;font:400 .74rem "DM Mono",monospace;color:rgba(20,17,15,.72);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .arr{
+    flex:none;width:38px;height:38px;border-radius:50%;background:#fff;color:var(--dark);border:var(--bw) solid var(--dark);
+    display:grid;place-items:center;transition:transform .2s;
+  }
+  .arr svg{width:17px;height:17px}
+  a.chan:hover .arr{transform:translate(2px,-2px) rotate(8deg)}
+
+  footer{margin-top:38px;font:500 .7rem "DM Mono",monospace;letter-spacing:1.2px;color:var(--mut);text-transform:uppercase}
+
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translate(-50%,40px);z-index:9;opacity:0;pointer-events:none;
+    background:var(--yellow);color:var(--dark);border:var(--bw) solid var(--ink);padding:9px 16px;border-radius:12px;
+    box-shadow:4px 4px 0 var(--ink);font:500 .8rem "DM Mono",monospace;transition:.3s cubic-bezier(.2,.9,.3,1.3);
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @media (max-width:380px){
+    .chip{font-size:.62rem;padding:0 10px;gap:6px}
+    .btns{gap:6px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  }
+</style>
+</head>
+<body>
+  <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
+
+  <main class="wrap">
+    <section class="hero pop">
+      <div class="banner">
+        <span class="chip"><span class="dot"></span><span id="jam">ONLINE</span></span>
+        <div class="btns">
+          <button class="sq" id="share" aria-label="Bagikan halaman">
+            <svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.2 1l-6.9-3.8a3 3 0 0 0 0-2.4L15.8 7A3 3 0 1 0 15 5a3 3 0 0 0 .1.8L8.2 9.6a3 3 0 1 0 0 4.8l6.9 3.8A3 3 0 1 0 18 16z"/></svg>
+          </button>
+          <button class="sq" id="tema" aria-label="Ganti tema">
+            <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="av"><img id="foto" width="112" height="112" alt="Foto profil"></div>
+      <h1 id="nama"></h1>
+      <p class="handle" id="handle"></p>
+      <p class="typer" id="typer"></p>
+    </section>
+
+    <nav class="tiles" id="tiles" aria-label="Sosial media"></nav>
+    <div id="saluran"></div>
+
+    <footer id="footer"></footer>
+  </main>
+  <div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     EDIT DI SINI  -  semua isi halaman diatur lewat blok CONFIG ini
+     Kode By Arya Fox | Sumber: https://whatsapp.com/channel/0029Vb94ZxHBadmday3k9Q0I
+     ============================================================ -->
+<script id="config">
+const CONFIG = {
+  nama: "Adfaya Fathin Arya",
+  sorot: "Arya",                        // kata dalam nama yang diberi highlight (kosongkan "" jika tidak mau)
+  handle: "@adfayafathinarya",
+  foto: "https://files.catbox.moe/GANTI_LINK_FOTO.jpg",   // upload foto ke catbox.moe, tempel link-nya di sini
+  tema: "light",                        // tema awal: "light" atau "dark"
+  ticker: "FOLLOW ME ✦ ADFAYA FATHIN ARYA ✦ ",
+  mengetik: ["> halo, salam kenal!", "> ikuti sosial media saya", "> makasih udah mampir!"],
+  jam: { tampil: true, zona: "Asia/Jakarta", label: "WIB" },
+
+  // Kotak sosial media (3 per baris). ikon: instagram, tiktok, telegram, whatsapp, youtube, github, x, web
+  sosmed: [
+    { nama: "Instagram", ikon: "instagram", user: "@adfayafathinarya",  url: "https://instagram.com/adfayafathinarya",        warna: "#ff7a1a", teks: "#14110f" },
+    { nama: "TikTok",    ikon: "tiktok",    user: "@adfayafathinarya09", url: "https://www.tiktok.com/@adfayafathinarya09",   warna: "#ffd23f", teks: "#14110f" },
+    { nama: "Telegram",  ikon: "telegram",  user: "@Aryafoxreal",        url: "https://t.me/Aryafoxreal",                      warna: "#3b5bff", teks: "#ffffff" }
+  ],
+
+  // Kartu lebar di bawah sosmed (boleh lebih dari satu)
+  saluran: {
+    label: "Ikuti Saluran",             // kosongkan "" jika tidak mau ada label
+    daftar: [
+      { judul: "Saluran WhatsApp", sub: "Ikuti saluran saya", ikon: "whatsapp", url: "https://whatsapp.com/channel/0029Vb94ZxHBadmday3k9Q0I", warna: "#25d366" }
+    ]
+  }
+};
+</script>
+
+<script>
+/* Kode By Arya Fox | Sumber: https://whatsapp.com/channel/0029Vb94ZxHBadmday3k9Q0I */
+const IKON = {
+  instagram:'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.3 5.7a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z',
+  tiktok:'M16.6 2h-3.2v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.3a6.1 6.1 0 1 0 5.2 6V8.8a7.5 7.5 0 0 0 4.4 1.4V7a4.4 4.4 0 0 1-4.4-5z',
+  telegram:'M21.9 3.6 2.8 10.9c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 5.8c.2.6.1.8.7.8.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.7-.8l3.2-15.1c.3-1.3-.5-1.9-1.4-1.5zM8.6 13.5l9.8-6.2c.5-.3.9-.1.5.2l-8.1 7.3-.3 3.4z',
+  whatsapp:'M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4.1c1.7.7 2.3.8 3.1.7a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.1-.3-.2-.5-.3z',
+  youtube:'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z',
+  github:'M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12',
+  x:'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z',
+  web:'M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'
+};
+
+(function () {
+  'use strict';
+  var C = CONFIG, root = document.documentElement;
+  var $ = function (s) { return document.querySelector(s); };
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function url(u) { u = String(u || '').trim(); return /^(https?:\/\/|mailto:|tel:)/i.test(u) ? esc(u) : '#'; }
+  function col(v) { return String(v || '').replace(/[^#a-zA-Z0-9(),.%\s-]/g, ''); }
+  function svg(n) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + (IKON[n] || IKON.web) + '"/></svg>'; }
+  var PANAH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+  function delay(i) { return (0.2 + i * 0.06).toFixed(2) + 's'; }
+
+  /* ---- Isi halaman dari CONFIG ---- */
+  document.title = C.nama;
+  var nama = String(C.nama || ''), s = String(C.sorot || ''), k = s ? nama.lastIndexOf(s) : -1;
+  $('#nama').innerHTML = k < 0 ? esc(nama) : esc(nama.slice(0, k)) + '<span class="hl">' + esc(s) + '</span>' + esc(nama.slice(k + s.length));
+  $('#handle').textContent = C.handle || '';
+  if (!C.handle) $('#handle').style.display = 'none';
+
+  var tk = String(C.ticker || ''), n = tk ? Math.max(1, Math.ceil(140 / tk.length)) : 0;
+  var rep = '<span>' + esc(new Array(n + 1).join(tk)) + '</span>';
+  $('#track').innerHTML = rep + rep;
+  if (!tk) $('.ticker').style.display = 'none';
+
+  var foto = $('#foto');
+  foto.src = C.foto;
+  try { $('#favicon').href = C.foto; } catch (e) {}
+  foto.addEventListener('error', function () {
+    var ini = nama.split(/\s+/).map(function (w) { return w.charAt(0); }).join('').slice(0, 3).toUpperCase();
+    this.src = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" fill="#ffd23f"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-family="Arial Black,Arial" font-size="44" font-weight="900" fill="#14110f">' + esc(ini) + '</text></svg>');
+  }, { once: true });
+
+  $('#tiles').innerHTML = (C.sosmed || []).map(function (x, i) {
+    return '<a class="tile press pop" style="--d:' + delay(i) + ';background:' + col(x.warna || '#ffd23f') + ';--tc:' + col(x.teks || '#14110f') + '"' +
+      ' href="' + url(x.url) + '" target="_blank" rel="noopener" aria-label="' + esc(x.nama + (x.user ? ' ' + x.user : '')) + '" title="' + esc(x.user || x.nama) + '">' +
+      '<span class="ic">' + svg(x.ikon) + '</span><span class="nm">' + esc(x.nama) + '</span></a>';
+  }).join('');
+  if (!(C.sosmed || []).length) $('#tiles').style.display = 'none';
+
+  var sal = C.saluran || {}, daftar = sal.daftar || [], base = (C.sosmed || []).length;
+  $('#saluran').innerHTML = !daftar.length ? '' :
+    (sal.label ? '<div class="label pop" style="--d:' + delay(base) + '"><span>' + esc(sal.label) + '</span></div>' : '<div style="height:28px"></div>') +
+    '<div class="chans">' + daftar.map(function (c, i) {
+      var w = col(c.warna || '#25d366');
+      return '<a class="chan press pop" style="--d:' + delay(base + 1 + i) + ';background:' + w + ';--cc:' + w + '" href="' + url(c.url) + '" target="_blank" rel="noopener">' +
+        '<span class="cic">' + svg(c.ikon || 'whatsapp') + '</span>' +
+        '<span class="tt"><b>' + esc(c.judul) + '</b><small>' + esc(c.sub || '') + '</small></span>' +
+        '<span class="arr">' + PANAH + '</span></a>';
+    }).join('') + '</div>';
+
+  $('#footer').textContent = '© ' + new Date().getFullYear() + ' ' + nama;
+
+  /* ---- Jam ---- */
+  function jam() {
+    var j = C.jam || {}, t = 'ONLINE';
+    if (j.tampil) {
+      try { t += ' · ' + new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', timeZone: j.zona }).replace('.', ':') + ' ' + (j.label || ''); } catch (e) {}
+    }
+    $('#jam').textContent = t.trim();
+  }
+  jam(); setInterval(jam, 30000);
+
+  /* ---- Teks mengetik ---- */
+  var kata = (C.mengetik && C.mengetik.length) ? C.mengetik : [''], ki = 0, ci = 0, hapus = false, el = $('#typer');
+  if (!C.mengetik || !C.mengetik.length) el.style.display = 'none';
+  function ketik() {
+    var w = kata[ki];
+    if (reduce) { el.textContent = w; ki = (ki + 1) % kata.length; return setTimeout(ketik, 2200); }
+    el.textContent = w.slice(0, ci);
+    if (!hapus && ci === w.length) { hapus = true; return setTimeout(ketik, 1600); }
+    if (hapus && ci === 0) { hapus = false; ki = (ki + 1) % kata.length; }
+    ci += hapus ? -1 : 1;
+    setTimeout(ketik, hapus ? 30 : 70);
+  }
+  ketik();
+
+  /* ---- Tema ---- */
+  function setMeta() { $('meta[name=theme-color]').content = root.dataset.theme === 'dark' ? '#14110f' : '#ff7a1a'; }
+  root.dataset.theme = C.tema === 'dark' ? 'dark' : 'light';
+  try { var tsim = localStorage.getItem('tema'); if (tsim === 'dark' || tsim === 'light') root.dataset.theme = tsim; } catch (e) {}
+  setMeta();
+  $('#tema').addEventListener('click', function () {
+    var baru = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = baru; setMeta();
+    try { localStorage.setItem('tema', baru); } catch (e) {}
+  });
+
+  /* ---- Bagikan / salin tautan ---- */
+  function toast(t) {
+    var e = $('#toast'); e.textContent = t; e.classList.add('show');
+    clearTimeout(toast.t); toast.t = setTimeout(function () { e.classList.remove('show'); }, 1800);
+  }
+  $('#share').addEventListener('click', function () {
+    if (navigator.share) { navigator.share({ title: nama, url: location.href }).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(function () { toast('LINK DISALIN ✓'); }, function () { toast('GAGAL MENYALIN'); });
+    else toast('SALIN DARI ADDRESS BAR');
+  });
+
+  /* ---- Getar halus saat ditekan ---- */
+  document.addEventListener('pointerdown', function (e) {
+    if (e.target.closest && e.target.closest('.press, .sq') && navigator.vibrate) { try { navigator.vibrate(8); } catch (x) {} }
+  });
+
+  /* ---- Sorotan mengikuti jari/kursor ---- */
+  function pos(e) { root.style.setProperty('--px', e.clientX + 'px'); root.style.setProperty('--py', e.clientY + 'px'); }
+  addEventListener('pointermove', pos);
+  addEventListener('pointerdown', pos);
+})();
+</script>
+</body>
+</html>
